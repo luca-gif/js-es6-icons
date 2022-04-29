@@ -118,10 +118,10 @@ items.forEach((item) => {
 });
 
 function generaCard(item) {
-    let classe = item.color ? item.color : "";
+    let color = item.color ? item.color : "";
     return `
 	<div class="col card text-center lm-card">
-	<i class="${item.family} ${item.prefix}${item.name} ${classe}"></i> 
+	<i class="${item.family} ${item.prefix}${item.name} ${color}"></i> 
 			 ${item.name}
 	</div>`;
 }
