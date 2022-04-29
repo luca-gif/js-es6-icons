@@ -115,18 +115,13 @@ const items = [{
 items.forEach((item) => {
     const card = generaCard(item);
     document.querySelector(".row").innerHTML += card;
-
-    /* Separo gli oggetti in base al colore */
-
-    if (item.color === "orange") {
-        document.querySelector(".card i").classList.add("orange");
-    } else if (item.color === "green") {} else {}
 });
 
 function generaCard(item) {
+    let classe = item.color ? item.color : "";
     return `
 	<div class="col card text-center lm-card">
-	<i class="${item.family} ${item.prefix}${item.name}"></i> 
+	<i class="${item.family} ${item.prefix}${item.name} ${classe}"></i> 
 			 ${item.name}
 	</div>`;
 }
