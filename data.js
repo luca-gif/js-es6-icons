@@ -113,8 +113,22 @@ const items = [{
 ];
 
 items.forEach((item) => {
+    let animals = [];
+    let fruits = [];
+    let user = [];
+
     const card = generaCard(item);
     document.querySelector(".row").innerHTML += card;
+
+    /* Separo gli oggetti in base al colore */
+
+    if (item.color === "orange") {
+        animals.push(item);
+    } else if (item.color === "green") {
+        fruits.push(item);
+    } else {
+        user.push(item);
+    }
 });
 
 function generaCard(item) {
@@ -124,5 +138,3 @@ function generaCard(item) {
 			 ${item.name}
 	</div>`;
 }
-
-console.log(items);
