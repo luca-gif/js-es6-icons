@@ -112,16 +112,70 @@ const items = [{
     },
 ];
 
-items.forEach((item) => {
-    const card = generaCard(item);
-    document.querySelector(".row").innerHTML += card;
+const animals = [];
+const vegetables = [];
+const users = [];
+
+document.getElementById("categoria").addEventListener("change", function() {
+    const categoria = this.value;
+    const valoriCategoria = ["all", "animals", "vegetables", "users"];
+    const valoreCategoria = valoriCategoria[categoria];
+    reset();
+
+    animals.forEach((el) => {
+        if (valoreCategoria === "animals") {
+            card = generaCard(el);
+            document.querySelector(".row").innerHTML += card;
+        }
+    });
+
+    vegetables.forEach((el) => {
+        let card;
+        if (valoreCategoria === "vegetables") {
+            card = generaCard(el);
+            document.querySelector(".row").innerHTML += card;
+        }
+    });
+
+    users.forEach((el) => {
+        let card;
+        if (valoreCategoria === "users") {
+            card = generaCard(el);
+            document.querySelector(".row").innerHTML += card;
+        }
+    });
+
+    items.forEach((el) => {
+        let card;
+        if (valoreCategoria === "all") {
+            card = generaCard(el);
+            document.querySelector(".row").innerHTML += card;
+        }
+    });
 });
 
-function generaCard(item) {
-    let color = item.color ? item.color : "";
+items.forEach((el) => {
+    const card = generaCard(el);
+    document.querySelector(".row").innerHTML += card;
+
+    if (el.type === "animal") {
+        animals.push(el);
+    } else if (el.type === "vegetable") {
+        vegetables.push(el);
+    } else if (el.type === "user") {
+        users.push(el);
+    }
+});
+
+function generaCard(el) {
+    let color = el.color ? el.color : " ";
     return `
 	<div class="col card text-center lm-card">
-	<i class="${item.family} ${item.prefix}${item.name} ${color}"></i> 
-			 ${item.name}
+	<i class="${el.family} ${el.prefix}${el.name} ${color}"></i>
+    ${el.name}
 	</div>`;
+}
+
+function reset() {
+    document.querySelector(".row").innerHTML = "";
 }
